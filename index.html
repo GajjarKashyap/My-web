@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASHAYAP GAJJAR | UI/UX + AI PORTFOLIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            /* Hell Theme (Default) */
+            --hell-primary: #FF5E00;
+            --hell-secondary: #CC4B00;
+            --hell-bg: #0A0A0A;
+            --hell-text: #E5E7EB;
+            --hell-card: #1A1A1A;
+            
+            /* Heaven Theme */
+            --heaven-primary: #3B82F6;
+            --heaven-secondary: #2563EB;
+            --heaven-bg: #F9FAFB;
+            --heaven-text: #1F2937;
+            --heaven-card: #FFFFFF;
+            
+            /* Active Theme */
+            --primary: var(--hell-primary);
+            --secondary: var(--hell-secondary);
+            --bg: var(--hell-bg);
+            --text: var(--hell-text);
+            --card: var(--hell-card);
+            --glass: rgba(30, 30, 30, 0.5);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.3s;
+        }
+
+        /* COMING SOON SECTION */
+        .coming-soon {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            border-radius: 12px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .coming-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .coming-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            margin-bottom: 3rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* DUAL EYE DESIGN */
+        .eyes-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem auto;
+        }
+
+        .eye-wrapper {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .eye-socket {
+            width: 100%;
+            height: 100%;
+            background: var(--card);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .eye-wrapper:hover .eye-socket {
+            transform: scale(1.05);
+        }
+
+        .pupil {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50px;
+            left: 50px;
+            transition: transform 0.1s;
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio-preview {
+            padding: 5rem 2rem;
+            background: var(--bg);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid, .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .skill-card, .project-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card:hover, .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-title, .project-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tag {
+            background: rgba(255, 94, 0, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FOOTER WITH ALL SOCIAL LINKS */
+        footer {
+            background: var(--card);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--primary);
+            z-index: 100;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* HEAVEN THEME OVERRIDES */
+        body.heaven-mode {
+            --primary: var(--heaven-primary);
+            --secondary: var(--heaven-secondary);
+            --bg: var(--heaven-bg);
+            --text: var(--heaven-text);
+            --card: var(--heaven-card);
+            --glass: rgba(255, 255, 255, 0.2);
+        }
+
+        body.heaven-mode .tag {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .eyes-container {
+                gap: 1.5rem;
+            }
+            
+            .eye-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .pupil {
+                width: 40px;
+                height: 40px;
+                top: 40px;
+                left: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- COMING SOON SECTION -->
+    <section class="coming-soon">
+        <div class="glass-panel">
+            <h1 class="coming-title">COMING SOON</h1>
+            <p class="coming-subtitle">PREMIERE 2025</p>
+            
+            <!-- DUAL EYES CONTAINER -->
+            <div class="eyes-container">
+                <div class="eye-wrapper" id="eyeLeft">
+                    <div class="eye-socket">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="eye-wrapper" id="eyeRight">
+                    <div class="eye-socket">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <p>My new portfolio is under construction</p>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO PREVIEW -->
+    <section class="portfolio-preview">
+        <h2 class="section-title">MY EXPERTISE</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3 class="skill-title">UI/UX DESIGN</h3>
+                <p>Creating intuitive interfaces with psychological principles for optimal user engagement.</p>
+                <div>
+                    <span class="tag">Figma</span>
+                    <span class="tag">User Research</span>
+                    <span class="tag">Prototyping</span>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <h3 class="skill-title">AI INTEGRATION</h3>
+                <p>Building ethical AI interfaces that enhance human capabilities through thoughtful design.</p>
+                <div>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Predictive UX</span>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <h3 class="skill-title">FRONTEND DEVELOPMENT</h3>
+                <p>Implementing psychological principles in code for seamless user experiences.</p>
+                <div>
+                    <span class="tag">React</span>
+                    <span class="tag">Vue</span>
+                    <span class="tag">Three.js</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH ALL SOCIAL LINKS -->
+    <footer>
+        <h3 class="footer-name">KASHAYAP GAJJAR</h3>
+        <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+        </div>
+        <p class="copyright">© 2025 All rights reserved</p>
+    </footer>
+
+    <!-- THEME TOGGLE BUTTON -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Dual eye tracking
+        const pupils = document.querySelectorAll('.pupil');
+        const eyeLeft = document.getElementById('eyeLeft');
+        const eyeRight = document.getElementById('eyeRight');
+
+        function movePupils(e) {
+            pupils.forEach(pupil => {
+                const eye = pupil.parentElement.parentElement;
+                const rect = eye.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                const angle = Math.atan2(y, x);
+                const distance = Math.min(20, Math.sqrt(x * x + y * y) / 3);
+                
+                pupil.style.transform = `translate(
+                    ${Math.cos(angle) * distance}px, 
+                    ${Math.sin(angle) * distance}px
+                )`;
+            });
+        }
+
+        // Smooth eye movement
+        let targetX = 0, targetY = 0;
+        document.addEventListener('mousemove', (e) => {
+            const rect = eyeLeft.getBoundingClientRect();
+            targetX = e.clientX - (rect.left + rect.width / 2);
+            targetY = e.clientY - (rect.top + rect.height / 2);
+            movePupils(e);
+        });
+
+        // Eye click animation
+        [eyeLeft, eyeRight].forEach(eye => {
+            eye.addEventListener('click', function() {
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function setTheme(isHeaven) {
+            document.body.classList.toggle('heaven-mode', isHeaven);
+            themeToggle.innerHTML = isHeaven ? '<i class="fas fa-fire"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', isHeaven ? 'heaven' : 'hell');
+        }
+        
+        // Check for saved preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'heaven' || (!savedTheme && !prefersDark)) {
+            setTheme(true);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isHeaven = document.body.classList.contains('heaven-mode');
+            setTheme(!isHeaven);
+        });
+
+        // Social icons animation
+        const socialIcons = document.querySelectorAll('.social-links a');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'translateY(-5px) scale(1.2)';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
